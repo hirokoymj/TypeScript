@@ -48,6 +48,9 @@ npm install --save-dev watchify gulp-util
 ```
 
 ## 3. Create gulpfile.js
+https://github.com/hirokoymj/TypeScript/blob/master/gulpfile.js
+
+
 
 ## 4. Run gulp
 - Open Terminal and then move to project folder and type `gulp`.
