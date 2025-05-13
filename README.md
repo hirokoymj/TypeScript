@@ -1,5 +1,5 @@
 # TypeScript
-
+/*
 - 0:00:00 Introduction - DONE
 - 0:00:52 Prerequisites - DONE
 - 0:01:28 How to Take This Course - DONE
@@ -10,7 +10,7 @@
 - 0:17:24 Debugging TypeScript Applications - Done
 - 0:22:55 Fundamentals - Done
 - 0:23:23 Built-In Types - Done
-
+*/
 ## The any Type
 
 ```js
