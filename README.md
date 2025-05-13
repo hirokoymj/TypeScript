@@ -312,5 +312,123 @@ move("up"); // Valid
 move("diagonal"); // Error:
 ```
 
-- 0:56:30 Nullable Types
-- 0:59:06 Optional Chaining
+## Nullable Types
+
+- TypeScript is strictly checked null by default
+
+**Q:**
+`greet(null)` is error. How to fix it?
+
+```js
+function greet(name: string) {
+  console.log(name.toUpperCase());
+}
+
+greet(null); // error!!
+```
+
+**A: method 1**
+
+- tsconfig.json -> strictNullChecks: false -> error is gone.
+- "strictNullChecks": true // true is default and this is why by default typescript is very strict about using null values.
+
+```js
+//tsconfig
+strictNullChecks: false;
+
+function greet(name: string) {
+  console.log(name.toUpperCase());
+}
+
+greet(null);
+```
+
+**A: method 2**
+
+- We cannot pass `null`, so we use a union type.
+- Annotated the parameter as string or null
+
+```js
+function greet(name: string | null) {
+  if (name) console.log(name.toUpperCase());
+  else console.log("Hola!");
+}
+
+greet(null);
+```
+
+<hr />
+
+## Optional Chaining `?`
+
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+- The optional chaining (?.) operator accesses an object's property or calls a function. If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
+
+```js
+const adventurer = {
+  name: "Alice",
+  cat: {
+    name: "Dinah",
+  },
+};
+
+const dogName = adventurer.dog?.name;
+console.log(dogName);
+// Expected output: undefined
+
+console.log(adventurer.someNonExistentMethod?.());
+// Expected output: undefined
+```
+
+**Q1:**
+
+```js
+type Customer = {
+  birthday: Date,
+};
+
+function getCustomer(id: number): Customer | null {
+  return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(0);
+console.log(customer.birthday); ///ERROR // tsconfig.json - "strictNullChecks": true
+```
+
+**A1**
+
+```js
+type Customer = {
+  birthday: Date,
+};
+
+function getCustomer(id: number): Customer | null {
+  return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(0);
+console.log(customer?.birthday); // undefined
+
+let customer1 = getCustomer(1);
+console.log(customer1?.birthday); // 2025-05-13T22:38:52.611Z
+```
+
+**A2**
+
+```js
+type Customer = {
+  birthday?: Date,
+};
+
+function getCustomer(id: number): Customer | null {
+  return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(0);
+console.log(customer?.birthday?.getFullYear()); // ? undefined
+```
+
+**Example 2**
+
+- Optional element access operator for Array
+- `customers?[0]`
