@@ -1,16 +1,5 @@
 # TypeScript
-/*
-- 0:00:00 Introduction - DONE
-- 0:00:52 Prerequisites - DONE
-- 0:01:28 How to Take This Course - DONE
-- 0:02:57 What is TypeScript? - DONE
-- 0:07:38 Setting Up the Development Environment - DONE
-- 0:09:30 Your First TypeScript Program - DONE
-- 0:13:20 Configuring the TypeScript Compiler - DONE
-- 0:17:24 Debugging TypeScript Applications - Done
-- 0:22:55 Fundamentals - Done
-- 0:23:23 Built-In Types - Done
-*/
+
 ## The any Type
 
 ```js
