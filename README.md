@@ -289,7 +289,39 @@ kgToLbs("10kg");
 
 <hr />
 
-- 0:52:40 Intersection Types
-- 0:54:44 Literal Types
+## Intersection Types
+
+## Literal Types
+
+**Q:**
+`let quantity: 50 | 100 = 100;`
+
+**A:**
+
+- In TypeScript, a literal type is a type that specifies an exact value that a variable can hold.
+- instead of hard-coding, we can use a literal type.
+
+```js
+type Quantity = 50 | 100;
+let quantity: 50 | 100 = 100;
+```
+
+**Example**
+
+```js
+//Example 1
+type Metric = "cm" | "inch";
+
+//Example 2
+type Direction = "up" | "down" | "left" | "right";
+
+function move(direction: Direction) {
+  console.log(`Moving ${direction}`);
+}
+
+move("up"); // Valid
+move("diagonal"); // Error:
+```
+
 - 0:56:30 Nullable Types
 - 0:59:06 Optional Chaining
