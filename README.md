@@ -280,6 +280,51 @@ kgToLbs("10kg");
 
 ## Intersection Types
 
+- An intersection type creates a new type by combining multiple existing types.
+- `type typeAB = typeA & typeB`
+- https://www.typescripttutorial.net/typescript-tutorial/typescript-intersection-types/
+
+```js
+type Draggable = {
+  drag: () => void,
+};
+
+type Resizable = {
+  resize: () => void,
+};
+
+type UIWidget = Draggable & Resizable;
+
+let textBox: UIWidget = {
+  drag: () => {},
+  resize: () => {},
+};
+```
+
+**Example**
+
+```js
+interface BusinessPartner {
+  name: string;
+  credit: number;
+}
+
+interface Identity {
+  id: number;
+  name: string;
+}
+
+interface Contact {
+  email: string;
+  phone: string;
+}
+
+type Employee = Identity & Contact;
+type Customer = BusinessPartner & Contact;
+```
+
+<hr />
+
 ## Literal Types
 
 **Q:**

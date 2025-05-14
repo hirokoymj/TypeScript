@@ -1,55 +1,40 @@
-//Q:
-// type Customer = {
-//   birthday: Date;
-// };
+///## Intersection Types
 
-// function getCustomer(id: number): Customer | null {
-//   return id === 0 ? null : { birthday: new Date() };
-// }
-
-// let customer = getCustomer(0);
-// console.log(customer.birthday); ///ERROR // tsconfig.json - "strictNullChecks": true
-
-//A-1
-// type Customer = {
-//   birthday: Date;
-// };
-
-// function getCustomer(id: number): Customer | null {
-//   return id === 0 ? null : { birthday: new Date() };
-// }
-
-// let customer = getCustomer(0);
-// //optional property access operator
-// console.log(customer?.birthday); // ? undefined
-
-// let customer1 = getCustomer(1);
-// //optional property access operator
-// console.log(customer1?.birthday); // ? 2025-05-13T22:38:52.611Z
-
-//A-2
-type Customer = {
-  birthday?: Date;
+// a union type, we can say a variable or a function parameter can be one of
+// another technique for combining types called intersection
+type Draggable = {
+  drag: () => void;
 };
 
-function getCustomer(id: number): Customer | null {
-  return id === 0 ? null : { birthday: new Date() };
+type Resizable = {
+  resize: () => void;
+};
+
+type UIWidget = Draggable & Resizable;
+
+let textBox: UIWidget = {
+  drag: () => {},
+  resize: () => {},
+};
+
+//https://www.typescripttutorial.net/typescript-tutorial/typescript-intersection-types/
+//type typeAB = typeA & typeB;
+
+//Example
+interface BusinessPartner {
+  name: string;
+  credit: number;
 }
 
-let customer = getCustomer(0);
-//Optional property access operator
-console.log(customer?.birthday?.getFullYear()); // ? undefined
+interface Identity {
+  id: number;
+  name: string;
+}
 
-//Optional element access operator
-//if(customers !== null && customers !== undefined)
-//customers[0]
-//customers?[0]
+interface Contact {
+  email: string;
+  phone: string;
+}
 
-///Optional call
-
-//let log: any = (message: string) => console.log(message);
-let log: any = null;
-log("a"); //crash
-
-//Solution
-log?.("a"); //crash
+type Employee = Identity & Contact;
+type Customer = BusinessPartner & Contact;
